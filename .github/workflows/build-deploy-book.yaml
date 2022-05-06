@@ -11,7 +11,6 @@ env:
   RENV_PATHS_ROOT: ~/.local/share/renv
   MINICONDA_LIB_PATH: /Users/runner/Library/r-miniconda/
   MINICONDA_WORK_PATH: /Users/runner/work/rmarkdown-guide/
-  GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
