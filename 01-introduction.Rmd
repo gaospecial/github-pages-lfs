@@ -18,7 +18,10 @@ knitr::kable(
 
 就这样，你可以一直编下去，直到编不下去。
 
-```{r fig.cap="导入 LFS 文件并在 HTML 文档中调用它"}
+```{r fig.cap="导入 Git 正常文件并在 HTML 文档中调用它"}
 knitr::include_graphics("images/knit-logo.png")
 ```
 
+```{r fig.cap="导入 LFS 文件并在 HTML 文档中调用它"}
+knitr::include_graphics("images/knit-logo-lfs.png")
+```
