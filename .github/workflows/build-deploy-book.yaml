@@ -28,7 +28,7 @@ jobs:
 
       - name: Install pandoc
         run: |
-          apt install pandoc
+          sudo apt install pandoc
 
       - name: Cache renv packages
         uses: actions/cache@v2
