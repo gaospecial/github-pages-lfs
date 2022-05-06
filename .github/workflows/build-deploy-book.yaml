@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repo & download Git-LFS files
         uses: actions/checkout@v3.0.2
@@ -28,7 +28,7 @@ jobs:
 
       - name: Install pandoc
         run: |
-          brew install pandoc
+          apt install pandoc
 
       - name: Cache renv packages
         uses: actions/cache@v2
