@@ -1,0 +1,66 @@
+# PDF 输出特有的问题 {#PDF}
+
+
+## 图上的中文字符
+
+中文字符的乱码让人很着急上火。
+
+
+比如下面这幅图（图\@ref(fig:hello-chinese-title-bad)），原本好好的。可是一旦我们给他加上中文的标题，就方框化了[^bad-chinese]。
+
+[^bad-chinese]: 这种情况可能仅在输出 PDF 的时候才会出现。
+
+```{r hello-chinese-title-bad, fig.cap='雷猴啊，散点图！'}
+par(mar = c(4, 4, 1, .1))
+plot(cars, pch = 19, main="雷猴啊")
+```
+
+
+这时，在 chunk option 中加入 `fig.showtext = TRUE` 可以挽救一下（图\@ref(fig:hello-chinese-title-good)）。
+
+
+```{r hello-chinese-title-good, fig.cap='雷猴啊，散点图！',  fig.showtext = TRUE}
+par(mar = c(4, 4, 1, .1))
+plot(cars, pch = 19, main="雷猴啊")
+```
+
+
+同样的情况也适用于 `ggplot2` 系统的图片（图 \@ref(fig:hello-chinese-ggplot)）。
+
+```{r hello-chinese-ggplot, fig.cap="ggplot 画图示例",fig.showtext = TRUE}
+library(ggplot2)
+p <- ggplot(mtcars, aes(mpg, cyl)) + geom_point() +
+  labs(title="一份精致的汽车数据")
+p
+```
+
+
+## 注释中的引文
+
+如果在图注中添加引文，可能会出现错误。
+我们还使用刚刚的绘图，并为其加入一个引文链接。
+
+```{r ggplot-with-caption, fig.cap="这是一个使用 ggplot 绘制的图片[@R-ggplot2]",fig.showtext = TRUE}
+p
+```
+
+
+## html widget 的快照
+
+在下面的这幅图片中，我们输出了一个 HTML widget，这在 HTML 输出中十分友好。
+如果要输出这个图片到 PDF 中，会自动调用 webshot 模块拍快照。
+默认情况下，情况是下面这样子。
+
+```{r plotly-snap-delay-short, fig.cap="需要设置合理的 webshot 参数", fig.showtext = TRUE}
+library(plotly)
+ggplotly(p)
+```
+
+当图的结构比较复杂的时候，你会看到这个快照的延时不够，所以看不到这幅图片了。
+这时就需要调整延时。
+
+
+```{r plotly-snap-delay-10, fig.cap="需要设置合理的 webshot 参数",fig.showtext = TRUE,screenshot.opts = list(delay = 1, cliprect = 'viewport')}
+d <- data.frame(x = runif(1000), y= runif(1000))
+ggplotly(p = ggplot(d, aes(x,y)) + geom_point())
+```
