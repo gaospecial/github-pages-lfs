@@ -1,6 +1,7 @@
 fig:hello
 tab:iris
 fig:unnamed-chunk-3
+fig:unnamed-chunk-4
 fig:hello-chinese-title-bad
 fig:hello-chinese-title-good
 fig:hello-chinese-ggplot
