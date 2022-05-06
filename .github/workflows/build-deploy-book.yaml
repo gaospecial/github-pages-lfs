@@ -28,7 +28,7 @@ jobs:
 
       - name: Install pandoc
         run: |
-          sudo apt install pandoc
+          sudo apt install pandoc pandoc-citeproc
           sudo apt install libcurl4-openssl-dev
 
       - name: Cache renv packages
