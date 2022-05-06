@@ -61,3 +61,4 @@ jobs:
         with:
           branch: gh-pages
           folder: _book
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
