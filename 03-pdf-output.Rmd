@@ -20,6 +20,7 @@ plot(cars, pch = 19, main="雷猴啊")
 
 
 ```{r hello-chinese-title-good, fig.cap='雷猴啊，散点图！',  fig.showtext = TRUE}
+library(showtext)
 par(mar = c(4, 4, 1, .1))
 plot(cars, pch = 19, main="雷猴啊")
 ```
